@@ -29,3 +29,8 @@ Topics to discuss
 	
 * ## How do we solve the stale CSS problem?
 Too much crap gets left behind. Overrides from standard styles get messy and there is no standard place to put them.
+
+* ## Avoid writing unnecessary markup
+	* More to maintain
+  * harder to manipulate
+  * Could be the source of some unused styles
