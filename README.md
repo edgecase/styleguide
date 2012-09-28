@@ -24,7 +24,7 @@ Topics to discuss
 	* box-sizing: border-box;
 
 
-*  ## Standard control types?
+* ## Standard control types?
 	*  Buttons, popovers, forms, etc.
 	
 * ## How do we solve the stale CSS problem?
