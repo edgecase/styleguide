@@ -1,0 +1,65 @@
+@import compass
+@import compass/reset
+
+
+$minimum_desktop_width: "(min-width:601px)"
+$phone_width: "(max-width:600px)"
+
+$retina     : "(min--moz-device-pixel-ratio: 1.5), (-o-min-device-pixel-ratio: 3/2),   (-webkit-min-device-pixel-ratio : 1.5), (min-resolution: 1.5dppx), (min-device-pixel-ratio : 1.5)"
+$non_retina : "(max--moz-device-pixel-ratio: 1.4), (-o-max-device-pixel-ratio: 14/10), (-webkit-max-device-pixel-ratio : 1),   (max-resolution: 1.4dppx), (max-device-pixel-ratio : 1.4)"
+
+$desktop          : "#{$minimum_desktop_width} and (min--moz-device-pixel-ratio: 1),   #{$minimum_desktop_width} and (-o-min-device-pixel-ratio: 3/3), #{$minimum_desktop_width} and (-webkit-min-device-pixel-ratio : 1),   #{$minimum_desktop_width} and (min-resolution: 1dppx),   #{$minimum_desktop_width} and (min-device-pixel-ratio : 1)"
+$desktop_retina   : "#{$minimum_desktop_width} and (min--moz-device-pixel-ratio: 1.5), #{$minimum_desktop_width} and (-o-min-device-pixel-ratio: 3/2), #{$minimum_desktop_width} and (-webkit-min-device-pixel-ratio : 1.5), #{$minimum_desktop_width} and (min-resolution: 1.5dppx), #{$minimum_desktop_width} and (min-device-pixel-ratio : 1.5)"
+$phone_non_retina : "#{$phone_width} and (max--moz-device-pixel-ratio: 1.4), #{$phone_width} and (-o-max-device-pixel-ratio: 14/10), #{$phone_width} and (-webkit-max-device-pixel-ratio : 1),   #{$phone_width} and (max-resolution: 1.4dppx), #{$phone_width} and (max-device-pixel-ratio : 1.4)"
+$phone_retina     : "#{$phone_width} and (min--moz-device-pixel-ratio: 1.5), #{$phone_width} and (-o-min-device-pixel-ratio: 3/2),   #{$phone_width} and (-webkit-min-device-pixel-ratio : 1.5), #{$phone_width} and (min-resolution: 1.5dppx), #{$phone_width} and (min-device-pixel-ratio : 1.5)"
+
+
+// ---------------------------------------------------
+// MIXIN: Clearfix
+// For parent with children that float
+// Example:
+// <div class="parent">
+//   <span>Text</span>
+//   <span>Text</span>
+// CSS:
+// .parent
+//   +clearfix
+//   div
+//     float: left
+
+@mixin clearfix
+  zoom: 1
+  &:before, &:after
+    content: ''
+    display: table
+  &:after
+    clear: both
+
+
+$prefixes: ("-webkit-","-moz-", "-o-", "")
+@mixin selection($color, $background)
+  @each $prefix in $prefixes
+    ::#{$prefix}selection
+      color: $color
+      background: $background
+
+
+// ---------------------------------------------------
+// MIXIN: User select
+// Commonly used for preventing text selection
+// Example:
+// .button
+//   +user-select(none)
+
+@mixin user-select($select)
+  @include experimental(user-select, $select, -moz, -webkit, not -o, not -ms, -khtml, official)
+
+
+.clearfix
+  +clearfix
+
+// Import generic UI elements
+// @import 'button'
+
+// Import page specific styles
+// @import 'post_edit'
